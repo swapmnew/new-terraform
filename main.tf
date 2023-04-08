@@ -1,9 +1,7 @@
 resource "openstack_blockstorage_volume_v2" "VOLUME_NAME" {
   name = var.VOLUME_NAME
   size = var.volume_size
-  #image_id    = "${var.image_id}"
   volume_type = var.volume_type
-  #availability_zone = "${var.availability_zone}"
 }
 
 resource "openstack_compute_instance_v2" "INSTANCE_NAME" {
@@ -12,6 +10,8 @@ resource "openstack_compute_instance_v2" "INSTANCE_NAME" {
   flavor_id = var.flavor_id
   key_pair  = "cloud"
   security_groups = var.security_group_names
+  #availability_zone = "${var.availability_zone}"
+  #image_id    = "${var.image_id}"
 
   network {
     name = var.network_name
