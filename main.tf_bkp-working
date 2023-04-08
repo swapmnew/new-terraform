@@ -7,7 +7,6 @@ resource "openstack_blockstorage_volume_v2" "VOLUME_NAME" {
 }
 
 resource "openstack_compute_instance_v2" "INSTANCE_NAME" {
-  count     = var.instance_count
   name      = var.INSTANCE_NAME 
   image_id  = var.image_id
   flavor_id = var.flavor_id
@@ -34,11 +33,11 @@ resource "openstack_compute_floatingip_associate_v2" "my_pool" {
     destination = "/tmp/"
   }
   provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u cloud-user -i '${var.floating_ip_address}', --private-key /tmp/sub_tasks/cloud.pem -e 'pub_key=/tmp/sub_tasks/cloud.pem' main.yml"
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u cloud-user -i '10.109.30.230,' --private-key /tmp/sub_tasks/cloud.pem -e 'pub_key=/tmp/sub_tasks/cloud.pem' main.yml"
   }
   connection {
     type        = "ssh"
-    host        = "${var.floating_ip_address}"
+    host        = "10.109.30.230"
     user        = "cloud-user"
     private_key = file("/u02/terraform/anssible-scripts/cloud.pem")
     timeout     = "4m"
