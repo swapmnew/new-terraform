@@ -7,7 +7,6 @@ resource "openstack_blockstorage_volume_v2" "VOLUME_NAME" {
 }
 
 resource "openstack_compute_instance_v2" "INSTANCE_NAME" {
-  count     = var.instance_count
   name      = var.INSTANCE_NAME 
   image_id  = var.image_id
   flavor_id = var.flavor_id

@@ -8,10 +8,10 @@ variable "security_group_names" {
  default = [ "default" ] 
 }
 
-variable "instance_count" {
-  type = number
-  default = 1
-}
+#variable "instance_count" {
+#  type = number
+#  default = 1
+#}
 
 #variable "security_group_names" {}
 variable "INSTANCE_NAME" {}
